@@ -7,10 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Common Step Definitions
- * Contains reusable step definitions for response validations
- */
 @Slf4j
 public class CommonsSteps {
 
