@@ -1,4 +1,4 @@
-package br.com.marina.qa.stepsDefinations.Login;
+package br.com.marina.qa.stepsDefinitions.Login;
 
 import br.com.marina.qa.context.ScenarioContext;
 import br.com.marina.qa.factory.Login.LoginFactory;
@@ -19,9 +19,9 @@ public class LoginSteps {
     private final LoginService loginService;
     private final ScenarioContext context;
 
-    public LoginSteps(ScenarioContext context) {
+    public LoginSteps(LoginService loginService, ScenarioContext context) {
+        this.loginService = loginService;
         this.context = context;
-        this.loginService = new LoginService();
     }
 
     @Given("I have a login payload with the {string} as {string}")
