@@ -14,7 +14,7 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 @SelectClasspathResource("features")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
-        value = "br.com.marina.qa.stepsDefinations"
+        value = "br.com.marina.qa.stepsDefinitions"
 )
 @ConfigurationParameter(
         key = PLUGIN_PROPERTY_NAME,
@@ -25,7 +25,7 @@ import static io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_N
 )
 @ConfigurationParameter(
         key = FILTER_TAGS_PROPERTY_NAME,
-        value = "@All"
+        value = "@regression"
 )
 public class RunnerTest {
 }

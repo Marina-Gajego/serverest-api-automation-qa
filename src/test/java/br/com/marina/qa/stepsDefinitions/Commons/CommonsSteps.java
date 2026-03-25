@@ -1,4 +1,4 @@
-package br.com.marina.qa.stepsDefinations.Commons;
+package br.com.marina.qa.stepsDefinitions.Commons;
 
 import br.com.marina.qa.context.ScenarioContext;
 import io.cucumber.java.en.Then;

@@ -15,6 +15,7 @@ public class ScenarioContext {
     private Object payload;
     private String authToken;
     private String id;
+    private String email;
     private final Map<String, Object> testData = new HashMap<>();
 
     public void setTestData(String key, Object value) {
@@ -26,6 +27,7 @@ public class ScenarioContext {
         payload = null;
         authToken = null;
         id = null;
+        email =  null;
         testData.clear();
     }
 }

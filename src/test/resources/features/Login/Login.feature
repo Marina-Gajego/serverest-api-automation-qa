@@ -1,4 +1,4 @@
-@All @Login
+@regression @Login
 Feature: Validate login api in different scenarios
 
   Scenario: Login with valid credentials - (POST /login)
@@ -9,7 +9,7 @@ Feature: Validate login api in different scenarios
     And The response should contain the message "Login realizado com sucesso"
     And The response should contain a token
 
-  Scenario Outline: Contract validation failures for Login API - (POST /login)
+  Scenario Outline: Ensure authentication API validates mandatory fields and formats - (POST /login)
     Given I have a login payload with the "<field>" as "<condition>"
     When I send a POST request to the authentication endpoint
     Then The response status code should be 400
