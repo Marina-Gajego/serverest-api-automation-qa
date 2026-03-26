@@ -18,10 +18,6 @@ public class ScenarioContext {
     private String email;
     private final Map<String, Object> testData = new HashMap<>();
 
-    public void setTestData(String key, Object value) {
-        testData.put(key, value);
-    }
-
     public void clearAll() {
         response = null;
         payload = null;
