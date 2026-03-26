@@ -2,8 +2,7 @@
 Feature: Validate login api in different scenarios
 
   Scenario: Login with valid credentials - (POST /login)
-    Given I have a valid user payload
-    And I register this user in the system
+    Given I have a registered user
     When I send a POST request to the authentication endpoint with the registered credentials
     Then The response status code should be 200
     And The response should contain the message "Login realizado com sucesso"

@@ -28,6 +28,13 @@ public class PostUserSteps {
         context.setPayload(PostUserFactory.validPostUser());
     }
 
+    @Given("I have a registered user")
+    public void iHaveRegisteredUser() {
+        iHaveValidUserPayload();
+        iSendAPostRequestToTheUserRegistrationEndpoint();
+        AndTheResponseShouldContainTheIdField();
+    }
+
     @Given("I have a user registration payload with the {string} as {string}")
     public void iHaveUserRegistrationPayloadWithTheAs(String field, String condition) {
         switch (condition.toLowerCase()) {
@@ -78,11 +85,6 @@ public class PostUserSteps {
         context.setResponse(response);
         if (context.getPayload() instanceof PostUserModel user) context.setEmail(user.getEmail());
         log.info("Request sent. Status: {}", response.getStatusCode());
-    }
-
-    @And("I register this user in the system")
-    public void iRegisterThisUserInTheSystem() {
-        iSendAPostRequestToTheUserRegistrationEndpoint();
     }
 
     @And("The response should contain the id field")

@@ -9,8 +9,7 @@ Feature: Validate create user api in diferents scenarios
     And The response should contain the id field
 
   Scenario: Try to create a user with an email already registered - (POST /usuarios)
-    Given I have a valid user payload
-    And I register this user in the system
+    Given I have a registered user
     When I have a user registration payload with the "email" as "already used"
     And I send a POST request to the user registration endpoint
     Then The response status code should be 400
