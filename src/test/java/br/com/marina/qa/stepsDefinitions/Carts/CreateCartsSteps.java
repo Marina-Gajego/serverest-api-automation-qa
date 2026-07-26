@@ -2,7 +2,7 @@ package br.com.marina.qa.stepsDefinitions.Carts;
 
 import br.com.marina.qa.context.ScenarioContext;
 import br.com.marina.qa.factory.Carts.CreateCartsFactory;
-import br.com.marina.qa.services.CreateCartsService;
+import br.com.marina.qa.services.Carts.CreateCartsService;
 import br.com.marina.qa.stepsDefinitions.Produts.CreateProductsSteps;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
