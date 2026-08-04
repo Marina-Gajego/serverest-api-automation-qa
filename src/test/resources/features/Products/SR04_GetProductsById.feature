@@ -47,5 +47,11 @@ Feature: Validate GET product by ID API in different scenarios
     And The response should contain the message "id deve ter exatamente 16 caracteres alfanuméricos"
     And The response contract should match "schemas/Products/get_products_by_id_invalid.schema.json"
 
-  # Implementar teste quando a API PUT de produtos for implementada - backlog
-  # Buscar um produto editado para validar que vem com o novo resultado esperado
+  @id=
+  Scenario: Retrieve product after update - (GET /produtos/{id})
+    Given I have a registered product
+    And I send a PUT request to the product for update all fields with the created product id
+    When I send a GET request to the product endpoint with the created product id
+    Then The response status code should be 200
+    And The response should contain the correct product details
+    And The response contract should match "schemas/Products/get_products_by_id_success.schema.json"

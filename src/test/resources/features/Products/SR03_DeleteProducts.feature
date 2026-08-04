@@ -30,4 +30,10 @@ Feature: Validate DELETE products API in different scenarios
     Then The response status code should be 200
     And The response should contain the message "Nenhum registro excluído"
 
-  ##Add caso de teste onde tenta deletar um produto que esta dentro de um carrinho
+  @id=
+  Scenario: Delete product that is in a cart - (DELETE /produtos/{id})
+    Given I have a registered product
+    And I have a registered cart
+    When I send a DELETE request to the products endpoint with the product ID
+    Then The response status code should be 400
+    And The response should contain the message "Não é permitido excluir produto que faz parte de carrinho"
