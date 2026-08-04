@@ -37,9 +37,10 @@ Feature: Validate DELETE user API in different scenarios
     Then The response status code should be 200
     And The response should contain the message "Nenhum registro excluído"
 
-# TODO: Implement the test case below once Carts API is integrated.
-# Expected response when trying to delete a user with an active shopping cart:
-# {
-#   "message": "Não é permitido excluir usuário com carrinho cadastrado",
-#   "idCarrinho": "qbMqntef4iTOwWfg"
-# }
+  @id=
+  Scenario: Attempt to delete user with an active shopping cart - (DELETE /usuarios/{_id})
+    Given I have a registered cart
+    When I send a DELETE request to the users endpoint with the created user id
+    Then The response status code should be 400
+    And The response should contain the message "Não é permitido excluir usuário com carrinho cadastrado"
+    And The response should contain the cart id

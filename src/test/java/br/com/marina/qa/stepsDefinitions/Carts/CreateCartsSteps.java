@@ -106,4 +106,9 @@ public class CreateCartsSteps {
                 .as("Response cart id should match the stored cart id")
                 .isEqualTo(scenarioContext.getCartId());
     }
+
+    @And("I set an invalid token cart")
+    public void iSetAnInvalidTokenCart() {
+        scenarioContext.setAuthToken("invalid-token-12345");
+    }
 }

@@ -54,7 +54,9 @@ jobs:
           - domain: Users
             cucumber-tag: "@Users"
           - domain: Products
-            cucumber-tag: "@products"
+            cucumber-tag: "@Products"
+          - domain: Products
+            cucumber-tag: "@Carts"
 
     services:
       serverest:

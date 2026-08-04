@@ -1,4 +1,4 @@
-@regression @products
+@regression @Products
 Feature: Validate DELETE products API in different scenarios
 
   @id=

@@ -1,4 +1,4 @@
-@regression @products
+@regression @Products
 Feature: Validate PUT product by ID API in different scenarios
 
   @id=

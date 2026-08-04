@@ -7,4 +7,5 @@ public final class Paths {
     public static final String USERS_ENDPOINT = "/usuarios";
     public static final String PRODUCTS_ENDPOINT = "/produtos";
     public static final String CARTS_ENDPOINT = "/carrinhos";
+    public static final String COMPLETE_PURCHASE_ENDPOINT = "/concluir-compra";
 }
