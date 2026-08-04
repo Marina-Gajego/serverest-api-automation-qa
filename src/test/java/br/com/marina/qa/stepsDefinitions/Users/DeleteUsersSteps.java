@@ -2,8 +2,11 @@ package br.com.marina.qa.stepsDefinitions.Users;
 
 import br.com.marina.qa.context.ScenarioContext;
 import br.com.marina.qa.services.Users.DeleteUsersService;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class DeleteUsersSteps {
 
@@ -20,6 +23,7 @@ public class DeleteUsersSteps {
         String id = context.getUserId();
         Response response = deleteUsersService.deleteUserById(id);
         context.setResponse(response);
+        System.out.println(response.asString());
     }
 
     @When("I send a DELETE request to the users endpoint without id")
@@ -41,5 +45,12 @@ public class DeleteUsersSteps {
         }
 
         context.setResponse(response);
+    }
+
+    @And("The response should contain the cart id")
+    public void theResponseShouldContainTheCartId() {
+        String responseBody = context.getResponse().asString();
+        String cartId = context.getCartId();
+        assertThat(responseBody).contains(cartId);
     }
 }
