@@ -1,4 +1,4 @@
-@regression @Carts
+@regression @Carts @teste
 Feature: Validate delete/complete purchase API in different scenarios
 
   @id=

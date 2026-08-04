@@ -1,4 +1,4 @@
-@regression @products
+@regression @Products
 Feature: Validate create products API in different scenarios
 
   @id=
