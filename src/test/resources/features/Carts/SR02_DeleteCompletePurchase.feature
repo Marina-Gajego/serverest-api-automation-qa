@@ -1,4 +1,4 @@
-@regression @Carts @teste
+@regression @Carts
 Feature: Validate delete/complete purchase API in different scenarios
 
   @id=
@@ -23,4 +23,10 @@ Feature: Validate delete/complete purchase API in different scenarios
     Then The response status code should be 401
     And The response should contain the message "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
-# Add teste onde o carrinho já foi cancelado, DELETE /carrinhos/cancelar-compra
+    @id=
+    Scenario: Attempt delete complete purchase with a cart that has already been canceled - (DELETE /carrinhos/concluir-compra)
+      Given I have a registered cart
+      And I send a DELETE request to the cancel purchase endpoint
+      When I send a DELETE request to the complete purchase endpoint
+      Then The response status code should be 200
+      And The response should contain the message "Não foi encontrado carrinho para esse usuário"

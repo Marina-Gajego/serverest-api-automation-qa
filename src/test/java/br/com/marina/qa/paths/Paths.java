@@ -8,4 +8,5 @@ public final class Paths {
     public static final String PRODUCTS_ENDPOINT = "/produtos";
     public static final String CARTS_ENDPOINT = "/carrinhos";
     public static final String COMPLETE_PURCHASE_ENDPOINT = "/concluir-compra";
+    public static final String CANCEL_PURCHASE_ENDPOINT = "/cancelar-compra";
 }
