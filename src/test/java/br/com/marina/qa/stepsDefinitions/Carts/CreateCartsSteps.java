@@ -33,6 +33,9 @@ public class CreateCartsSteps {
         Map<String, String> data = dataTable.asMap(String.class, String.class);
         int quantidade = Integer.parseInt(data.get("quantidade"));
         scenarioContext.setPayload(CreateCartsFactory.validCreateCarts(scenarioContext.getProductId(), quantidade));
+        scenarioContext.setCartPrecoTotal(scenarioContext.getProductPreco() * quantidade);
+        scenarioContext.setCartQuantidadeTotal(quantidade);
+        scenarioContext.setCartIdUsuario(scenarioContext.getUserId());
     }
 
     @Given("I have a cart payload with {string}")
@@ -94,6 +97,9 @@ public class CreateCartsSteps {
                 .isEqualTo(201);
 
         scenarioContext.setCartId(response.jsonPath().getString("_id"));
+        scenarioContext.setCartPrecoTotal(scenarioContext.getProductPreco());
+        scenarioContext.setCartQuantidadeTotal(1);
+        scenarioContext.setCartIdUsuario(scenarioContext.getUserId());
         log.info("Registered cart created with id: {}", scenarioContext.getCartId());
     }
 

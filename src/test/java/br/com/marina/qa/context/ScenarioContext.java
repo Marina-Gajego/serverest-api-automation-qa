@@ -35,6 +35,9 @@ public class ScenarioContext {
 
     //Carts
     private String cartId;
+    private Integer cartPrecoTotal;
+    private Integer cartQuantidadeTotal;
+    private String cartIdUsuario;
 
     //Classes
     private LoginSteps loginSteps;
@@ -55,5 +58,8 @@ public class ScenarioContext {
         productDescricao = null;
         productQuantidade = null;
         cartId = null;
+        cartPrecoTotal = null;
+        cartQuantidadeTotal = null;
+        cartIdUsuario = null;
     }
 }
