@@ -2,7 +2,7 @@
 Feature: Validate GET carts API in different scenarios
 
 
-  @id=
+  @CARTS-016
   Scenario Outline: Get cart by <param> query parameter - (GET /carrinhos)
     Given I have a registered cart
     When I send a GET request to the carts endpoint with the "<param>" query parameter
@@ -17,7 +17,7 @@ Feature: Validate GET carts API in different scenarios
       | quantidadeTotal |
       | idUsuario       |
 
-  @id=
+  @CARTS-017
   Scenario: Get cart by all query parameters - (GET /carrinhos)
     Given I have a registered cart
     When I send a GET request to the carts endpoint
@@ -25,7 +25,7 @@ Feature: Validate GET carts API in different scenarios
     And The response should contain the correct cart
     And The response contract should match "schemas/Carts/get_carts.schema.json"
 
-  @id=
+  @CARTS-018
   Scenario Outline: Get created cart is not returned by <param> query parameter with a different value - (GET /carrinhos)
     Given I have a registered cart
     When I send a GET request to the carts endpoint with the "<param>" query parameter and value "<value>"
@@ -40,7 +40,7 @@ Feature: Validate GET carts API in different scenarios
       | quantidadeTotal | createdValuePlusOne |
       | idUsuario       | invalid-user-id-123 |
 
-  @id=
+  @CARTS-019
   Scenario: Get no carts when query parameter value does not match any cart - (GET /carrinhos)
     Given I have a registered cart
     When I send a GET request to the carts endpoint with the "_id" query parameter and value "invalid-cart-id-123"
@@ -48,7 +48,7 @@ Feature: Validate GET carts API in different scenarios
     And The response should not contain any carts
     And The response contract should match "schemas/Carts/get_carts.schema.json"
 
-  @id=
+  @CARTS-020
   Scenario: Get carts without query parameters - (GET /carrinhos)
     Given I have a registered cart
     When I send a GET request to the carts endpoint without query parameters

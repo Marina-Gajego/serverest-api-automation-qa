@@ -1,19 +1,21 @@
 @regression @Users
 Feature: Validate create users api in different scenarios
 
-  @id=
+  @USERS-001
   Scenario: Create user with success - (POST /usuarios)
     Given I have a valid user payload
     When I send a POST request to the users endpoint
     Then The response status code should be 201
+    And The response contract should match "schemas/Common/message_with_id.schema.json"
     And The response should contain the message "Cadastro realizado com sucesso"
     And The response should contain a user id
 
-  @id=
+  @USERS-002
   Scenario Outline: Ensure post create user API validates mandatory fields and formats - (POST /login)
     Given I have a create user payload with the "<field>" as "<condition>"
     When I send a POST request to the users endpoint
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:
@@ -35,18 +37,20 @@ Feature: Validate create users api in different scenarios
       | password      | empty          | password não pode ficar em branco        |
       | administrador | empty          | administrador deve ser 'true' ou 'false' |
 
-  @id=
+  @USERS-003
   Scenario: Create user with malformed JSON payload - (POST /usuarios)
     Given I have a malformed JSON payload
     When I send a POST request to the users endpoint
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "Adicione aspas em todos os valores. Para mais informações acesse a issue https://github.com/ServeRest/ServeRest/issues/225"
 
-  @id=
+  @USERS-004
   Scenario Outline: Fail to create user with invalid data - (POST /usuarios)
     Given I have a user creation payload with "<condition>"
     When I send a POST request to the users endpoint
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should not contain a user id
     And The response should contain the message "<expected_message>"
 

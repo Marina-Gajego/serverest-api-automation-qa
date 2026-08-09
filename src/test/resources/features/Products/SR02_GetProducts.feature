@@ -1,7 +1,7 @@
 @regression @Products
 Feature: Validate GET products API in different scenarios
 
-  @id=
+  @PRODUCTS-013
   Scenario Outline: Get product by <param> query parameter - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint with the "<param>" query parameter
@@ -17,7 +17,7 @@ Feature: Validate GET products API in different scenarios
       | descricao  |
       | quantidade |
 
-  @id=
+  @PRODUCTS-014
   Scenario: Get product by all query parameters - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint
@@ -25,7 +25,7 @@ Feature: Validate GET products API in different scenarios
     And The response should contain the correct product
     And The response contract should match "schemas/Products/get_products.schema.json"
 
-  @id=
+  @PRODUCTS-015
   Scenario Outline: Get created product is not returned by <param> query parameter with a different value - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint with the "<param>" query parameter and value "<value>"
@@ -41,7 +41,7 @@ Feature: Validate GET products API in different scenarios
       | descricao  | Descricao inexistente |
       | quantidade | 999999                |
 
-  @id=
+  @PRODUCTS-016
   Scenario Outline: Get no products when query parameter value is transformed - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint with the "<param>" query parameter and value "<value>"
@@ -55,11 +55,12 @@ Feature: Validate GET products API in different scenarios
       | nome      | leadingSpaces     |
       | descricao | specialCharacters |
 
-  @id=
+  @PRODUCTS-017
   Scenario Outline: Reject invalid query parameter values - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint with the "<param>" query parameter and value "<value>"
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<message_expected>"
 
     Examples:
@@ -70,7 +71,7 @@ Feature: Validate GET products API in different scenarios
       | quantidade | abc   | quantidade deve ser um número      |
       | quantidade | 10.5  | quantidade deve ser um inteiro     |
 
-  @id=
+  @PRODUCTS-018
   Scenario: Get products without query parameters - (GET /produtos)
     Given I have a registered product
     When I send a GET request to the products endpoint without query parameters
@@ -78,7 +79,7 @@ Feature: Validate GET products API in different scenarios
     And The response should contain the correct product
     And The response contract should match "schemas/Products/get_products.schema.json"
 
-  @id=
+  @PRODUCTS-019
   Scenario: Get product after deletion - (GET /produtos)
     Given I have a registered product
     And I send a DELETE request to the products endpoint with the product ID

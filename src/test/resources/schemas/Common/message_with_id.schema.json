@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generic message with ID response schema",
+  "type": "object",
+  "required": [
+    "message",
+    "_id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "message": {
+      "type": "string",
+      "minLength": 1
+    },
+    "_id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9]+$"
+    }
+  }
+}

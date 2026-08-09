@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Generic message response schema",
+  "type": "object",
+  "required": [
+    "message"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "message": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,7 +1,7 @@
 @regression @Users
 Feature: Validate GET users API in different scenarios
 
-  @id=
+  @USERS-005
   Scenario Outline: Get user by <param> query parameter - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param>" query parameter
@@ -17,7 +17,7 @@ Feature: Validate GET users API in different scenarios
       | password      |
       | administrador |
 
-  @id=
+  @USERS-006
   Scenario: Get user by all query parameters - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint
@@ -25,7 +25,7 @@ Feature: Validate GET users API in different scenarios
     And The response should contain the correct user
     And The response contract should match "schemas/Users/get_users.schema.json"
 
-  @id=
+  @USERS-007
   Scenario Outline: Get user by combined query parameters - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param1>" and "<param2>" query parameters
@@ -40,7 +40,7 @@ Feature: Validate GET users API in different scenarios
       | nome   | administrador |
       | _id    | nome          |
 
-  @id=
+  @USERS-008
   Scenario Outline: Get created user is not returned by <param> query parameter with a different value - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param>" query parameter and value "<value>"
@@ -56,7 +56,7 @@ Feature: Validate GET users API in different scenarios
       | password      | marina123        |
       | administrador | false            |
 
-  @id=
+  @USERS-009
   Scenario Outline: Get created user is not returned by combined query parameters with one different value - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param1>" query parameter and the "<param2>" query parameter with value "<value>"
@@ -71,11 +71,12 @@ Feature: Validate GET users API in different scenarios
       | nome   | _id           | 12345            |
       | email  | password      | teste            |
 
-  @id=
+  @USERS-010
   Scenario Outline: Reject invalid query parameter values - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param>" query parameter and value "<condition>"
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should not contain the created user
     And The response should contain the message "<message_expected>"
 
@@ -87,7 +88,7 @@ Feature: Validate GET users API in different scenarios
     | email         | trailingSpaces     | email deve ser um email válido           |
     | email         |                    | email deve ser uma string                |
 
-  @id=
+  @USERS-011
   Scenario Outline: Get no users when query parameter value is transformed - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "<param>" query parameter and value "<condition>"
@@ -100,7 +101,7 @@ Feature: Validate GET users API in different scenarios
       | nome  | specialCharacters |
       | email | uppercase         |
 
-  @id=
+  @USERS-012
   Scenario: Get user by nome query parameter using different letter casing - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "nome" query parameter and value "uppercase"
@@ -108,7 +109,7 @@ Feature: Validate GET users API in different scenarios
     And The response should contain the correct user
     And The response contract should match "schemas/Users/get_users.schema.json"
 
-  @id=
+  @USERS-013
   Scenario: Get created user is not returned when nome has leading spaces - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint with the "nome" query parameter and value "leadingSpaces"
@@ -116,7 +117,7 @@ Feature: Validate GET users API in different scenarios
     And The response should not contain the created user
     And The response contract should match "schemas/Users/get_users.schema.json"
 
-  @id=
+  @USERS-014
   Scenario: Get user without query parameters - (GET /usuarios)
     Given I have a registered user
     When I send a GET request to the users endpoint without query parameters
@@ -124,7 +125,7 @@ Feature: Validate GET users API in different scenarios
     And The response should contain the correct user
     And The response contract should match "schemas/Users/get_users.schema.json"
 
-  @id=
+  @USERS-015
   Scenario: Verify deleted user is not returned in search - (GET /usuarios)
     Given I have a registered user
     When I send a DELETE request to the users endpoint with the created user id

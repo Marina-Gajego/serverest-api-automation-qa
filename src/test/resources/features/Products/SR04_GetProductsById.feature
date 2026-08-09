@@ -1,7 +1,7 @@
 @regression @Products
 Feature: Validate GET product by ID API in different scenarios
 
-  @id=
+  @PRODUCTS-025
   Scenario: Retrieve existing product by ID - (GET /produtos/{id})
     Given I have a registered product
     When I send a GET request to the product endpoint with the created product id
@@ -9,21 +9,21 @@ Feature: Validate GET product by ID API in different scenarios
     And The response should contain the correct product details
     And The response contract should match "schemas/Products/get_products_by_id_success.schema.json"
 
-  @id=
+  @PRODUCTS-026
   Scenario: Retrieve nonexistent product by ID - (GET /produtos/{id})
     When I send a GET request to the products with "nonexistent"
     Then The response status code should be 400
     And The response should contain the message "Produto não encontrado"
     And The response contract should match "schemas/Products/get_products_by_id_not_found.schema.json"
 
-  @id=
+  @PRODUCTS-027
   Scenario: Reject product ID with invalid characters - (GET /produtos/{id})
     When I send a GET request to the products with "invalid"
     Then The response status code should be 400
     And The response should contain the message "id deve ter exatamente 16 caracteres alfanuméricos"
     And The response contract should match "schemas/Products/get_products_by_id_invalid.schema.json"
 
-  @id=
+  @PRODUCTS-028
   Scenario: Retrieve deleted product by ID - (GET /produtos/{id})
     Given I have a registered product
     And I send a DELETE request to the products endpoint with the product ID
@@ -32,7 +32,7 @@ Feature: Validate GET product by ID API in different scenarios
     And The response should contain the message "Produto não encontrado"
     And The response contract should match "schemas/Products/get_products_by_id_not_found.schema.json"
 
-  @id=
+  @PRODUCTS-029
   Scenario: Retrieve product by lower-case transformed ID - (GET /produtos/{id})
     Given I have a registered product
     When I send a GET request to the products with "idminusculo"
@@ -40,14 +40,14 @@ Feature: Validate GET product by ID API in different scenarios
     And The response should contain the message "Produto não encontrado"
     And The response contract should match "schemas/Products/get_products_by_id_not_found.schema.json"
 
-  @id=
+  @PRODUCTS-030
   Scenario: Reject product ID with exceeded length - (GET /produtos/{id})
     When I send a GET request to the products with "excededid"
     Then The response status code should be 400
     And The response should contain the message "id deve ter exatamente 16 caracteres alfanuméricos"
     And The response contract should match "schemas/Products/get_products_by_id_invalid.schema.json"
 
-  @id=
+  @PRODUCTS-031
   Scenario: Retrieve product after update - (GET /produtos/{id})
     Given I have a registered product
     And I send a PUT request to the product for update all fields with the created product id
