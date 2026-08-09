@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get cart by ID invalid format response schema",
+  "type": "object",
+  "required": [
+    "id"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "const": "id deve ter exatamente 16 caracteres alfanuméricos"
+    }
+  }
+}

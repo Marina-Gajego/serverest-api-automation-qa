@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get cart by ID not found response schema",
+  "type": "object",
+  "required": [
+    "message"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "message": {
+      "type": "string",
+      "const": "Carrinho não encontrado"
+    }
+  }
+}
