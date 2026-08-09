@@ -55,7 +55,7 @@ jobs:
             cucumber-tag: "@Users"
           - domain: Products
             cucumber-tag: "@Products"
-          - domain: Products
+          - domain: Carts
             cucumber-tag: "@Carts"
 
     services:
