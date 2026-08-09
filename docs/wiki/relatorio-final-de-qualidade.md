@@ -101,4 +101,4 @@ Pendências opcionais internas: polimentos de nomenclatura, tags adicionais por 
 
 ## Conclusão
 
-O repositório está pronto para ser apresentado como projeto completo de automação de API. Ele não entrega apenas scripts de teste: entrega arquitetura de automação, evidência de execução, documentação de qualidade, análise crítica dos resultados e propostas técnicas para evolução da API.
+O repositório não entrega apenas scripts de teste: entrega arquitetura de automação, evidência de execução, documentação de qualidade, análise crítica dos resultados e propostas técnicas para evolução da API.
