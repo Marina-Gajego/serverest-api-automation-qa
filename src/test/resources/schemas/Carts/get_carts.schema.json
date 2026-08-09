@@ -1,0 +1,70 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Get carts success response schema",
+  "type": "object",
+  "required": [
+    "quantidade",
+    "carrinhos"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "quantidade": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "carrinhos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "produtos",
+          "precoTotal",
+          "quantidadeTotal",
+          "idUsuario",
+          "_id"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "produtos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "idProduto",
+                "quantidade",
+                "precoUnitario"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "idProduto": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "quantidade": {
+                  "type": "integer"
+                },
+                "precoUnitario": {
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "precoTotal": {
+            "type": "integer"
+          },
+          "quantidadeTotal": {
+            "type": "integer"
+          },
+          "idUsuario": {
+            "type": "string",
+            "minLength": 1
+          },
+          "_id": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
