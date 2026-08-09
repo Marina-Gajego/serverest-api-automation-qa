@@ -1,21 +1,23 @@
 @regression @Products
 Feature: Validate create products API in different scenarios
 
-  @id=
+  @PRODUCTS-001
   Scenario: Create a product with valid information - (POST /produtos)
     Given I have an authenticated user
     And I have a valid product payload
     When I send a POST request to create a product
     Then The response status code should be 201
+    And The response contract should match "schemas/Common/message_with_id.schema.json"
     And The response should contain the message "Cadastro realizado com sucesso"
     And The response should contain a product id
 
-  @id=
+  @PRODUCTS-002
   Scenario Outline: Ensure create product API validates mandatory fields - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with the "<field>" as "<condition>"
     When I send a POST request to create a product
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:
@@ -29,12 +31,13 @@ Feature: Validate create products API in different scenarios
       | descricao   | empty     | descricao não pode ficar em branco    |
       | quantidade  | empty     | quantidade é obrigatório              |
 
-  @id=
+  @PRODUCTS-003
   Scenario Outline: Create product with invalid data types - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with "<field>" as "<invalid_value>"
     When I send a POST request to create a product
     Then The response status code should be <status_code>
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:
@@ -47,36 +50,40 @@ Feature: Validate create products API in different scenarios
       | nome       | 45.67         | 201         | Cadastro realizado com sucesso  |
       | descricao  | 999           | 201         | Cadastro realizado com sucesso  |
 
-  @id=
+  @PRODUCTS-004
   Scenario: Create product with malformed JSON payload - (POST /produtos)
     Given I have an authenticated user
     And I have a malformed JSON payload
     When I send a POST request to create a product
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "Adicione aspas em todos os valores. Para mais informações acesse a issue https://github.com/ServeRest/ServeRest/issues/225"
 
-  @id=
+  @PRODUCTS-005
   Scenario: Create product without authentication token - (POST /produtos)
     Given I have a valid product payload
     And I have no authentication token
     When I send a POST request to create a product
     Then The response status code should be 401
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
-  @id=
+  @PRODUCTS-006
   Scenario: Create product with invalid authentication token - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with an invalid token
     When I send a POST request to create a product
     Then The response status code should be 401
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
-  @id=
+  @PRODUCTS-007
   Scenario Outline: Create product with invalid numeric values - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with "<field>" as "<value>"
     When I send a POST request to create a product
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:
@@ -87,12 +94,13 @@ Feature: Validate create products API in different scenarios
       | preco      | 0      | preco deve ser um número positivo      |
       | quantidade | -1     | quantidade deve ser maior ou igual a 0 |
 
-  @id=
+  @PRODUCTS-008
   Scenario Outline: Create product with boundary field values - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with "<field>" as "<value>"
     When I send a POST request to create a product
     Then The response status code should be <status_code>
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:
@@ -104,36 +112,40 @@ Feature: Validate create products API in different scenarios
       | quantidade | 0                                | 201         | Cadastro realizado com sucesso    |
       | quantidade | 999999                           | 201         | Cadastro realizado com sucesso    |
 
-  @id=
+  @PRODUCTS-009
   Scenario: Create product with minimum name length - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with a short name
     When I send a POST request to create a product
     Then The response status code should be 201
+    And The response contract should match "schemas/Common/message_with_id.schema.json"
     And The response should contain the message "Cadastro realizado com sucesso"
 
-  @id=
+  @PRODUCTS-010
   Scenario: Create product with long name - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with a long name
     When I send a POST request to create a product
     Then The response status code should be 201
+    And The response contract should match "schemas/Common/message_with_id.schema.json"
     And The response should contain the message "Cadastro realizado com sucesso"
 
-  @id=
+  @PRODUCTS-011
   Scenario: Create product with extra unknown fields in payload - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with extra unknown fields
     When I send a POST request to create a product
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "campo_desconhecido não é permitido"
 
-  @id=
+  @PRODUCTS-012
   Scenario Outline: Create product with null values - (POST /produtos)
     Given I have an authenticated user
     And I have a product payload with "<field>" as "null"
     When I send a POST request to create a product
     Then The response status code should be 400
+    And The response contract should match "schemas/Common/error_response.schema.json"
     And The response should contain the message "<expected_message>"
 
     Examples:

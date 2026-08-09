@@ -5,7 +5,10 @@ This repository contains API automation for the ServeRest project, guided by BMa
 ## Core Documentation
 
 - [Project Context](../project-context.md): AI-facing rules, stack details, architecture patterns, naming conventions, and critical implementation rules.
-- [Local Setup](LOCAL_SETUP.md): How to run the project locally and execute the test suite.
+- [Setup Local do Ambiente de Teste](wiki/setup-local-ambiente-de-teste.md): instruções para subir a API ServeRest localmente e executar a suíte.
+- [Uso do BMad TEA no Projeto](wiki/uso-do-bmad-tea-no-projeto.md): relato técnico de como o módulo TEA apoiou planejamento, automação, revisão, CI/CD e documentação.
+- [Resultados e Propostas dos Testes de API](wiki/resultados-e-propostas-melhoria-qualidade.md): leitura dos resultados da suíte e propostas priorizadas para evolução da API.
+- [Relatório Final de Qualidade](wiki/relatorio-final-de-qualidade.md): síntese executiva da cobertura, riscos, evidências, limitações e quality gate final.
 
 ## Project Summary
 
